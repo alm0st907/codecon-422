@@ -5,7 +5,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <h1 style={{color:'white'}}>Hello World</h1> {/*more inline css*/}
+      
     </div>
   );
 }
