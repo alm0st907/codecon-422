@@ -50,5 +50,5 @@ Project Members
 # Common Build Errors Encountered:
 - it's better to use VSCode's line commenting command as react can be very finicky depending on the placement of comments **(This is especially important when working with Konva which detects spaces as text and will fail)**
 
-#How to write React code:
+# How to write React code:
 - React used to have stateless and stateful components.  There were referred to as functional vs class components.  Nowadays, functional components when used with React v>16.8 have access to hooks, which allow data management such that in the future functional components will have all the features of class components.  However, class components ***will*** work just fine and there are no plans to remove this.  If writing functional components with hooks, be careful as some third-party packages may ***not*** support them.
