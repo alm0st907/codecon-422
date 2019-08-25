@@ -4,7 +4,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+<<<<<<< HEAD
     "eslint": "^6.2.2",
+=======
+    "eslint": "^6.2.1",
+>>>>>>> staging
     "eslint-plugin-react": "^7.14.3",
     "konva": "^4.0.5",
     "react": "^16.9.0",
