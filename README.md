@@ -1,5 +1,23 @@
 # codecon-422
-Defcon scale based task tracker project for CptS 422
+DEFCON scale based task tracker project for CptS 422
+
+## Summary:
+This will act initially as a standalone alternative to a Jira or similar issue based tracking system, however we plan to integrate with github/gitlab issues time permitting
+
+Issues will be tied to DEFCON levels of severity and assigned due dates. DEFCON 5 is the best state and the project will hit all deadlines on time or early. DEFCON 1 represents project failure or immenent failure to meet deadline/spec.
+
+Issues that are not resolved by due dates escalate the DEFCON level of the project which represents the health or launch readiness of the project by its projected deadline.
+
+&nbsp;
+
+Project Members
+* Garrett Rudisill
+* Mike Berger
+* Slater Weinstock
+* Jeff Kremer
+
+# **STARTING GUIDE**
+
 **Download node+npm for your os**
 
 - `cd codecon`
