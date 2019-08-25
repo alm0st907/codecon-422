@@ -44,6 +44,8 @@ Project Members
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     }
+- In VSCode, install the vscode-styled-components extension 
+
 
 # Common Build Errors Encountered:
 - it's better to use VSCode's line commenting command as react can be very finicky depending on the placement of comments **(This is especially important when working with Konva which detects spaces as text and will fail)**
