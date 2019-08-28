@@ -24,13 +24,7 @@ Project Members
   
 # Installing Dependencies for ReactJS:
 
-- **The package.json file should be updated such that you only have to do `npm i` and not run the next step.**
-- Run `npm i react react-dom react-scripts bootstrap reactstrap react-konva konva react-router-dom styled-components eslint eslint-plugin-react` as this will install the dependencies.  
-
-# Updating Packages:
-  
-- Run `npm i npm-check-updates -g`
-- It is important to check for updates when inside the codecon directory, so run `ncu -u` and then `npm install`
+`bash ./install.sh`
 
 # Building Locally:
 
