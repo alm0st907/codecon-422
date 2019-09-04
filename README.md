@@ -24,7 +24,8 @@ Project Members
   
 # Installing Dependencies for ReactJS:
 
-`bash ./install.sh`
+`bash install.sh`
+
 
 # Building Locally:
 
