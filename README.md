@@ -26,6 +26,7 @@ Project Members
 
 `bash install.sh`
 
+
 # Building Locally:
 
 - To begin running the app, `npm start` which builds on localhost
