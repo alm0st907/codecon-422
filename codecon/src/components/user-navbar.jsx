@@ -17,9 +17,10 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 /*Grabbed from: https://reactstrap.github.io/components/navbar/*/
-export default class Navigation extends Component {
+export default class UserNavigation extends Component {
   constructor(props) {
     super(props);
 
@@ -56,7 +57,7 @@ export default class Navigation extends Component {
           {" "}
           {/*md is medium*/}
           <NavbarBrand id="grad1" href="#home">
-            Test
+            project-name-placeholder
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} data-toggle="collapsed" />
           <Collapse
@@ -67,24 +68,13 @@ export default class Navigation extends Component {
             <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Menu
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem onClick={this.toggleModal}>B</DropdownItem>
-
-                  <DropdownItem>A</DropdownItem>
-                  <DropdownItem>B</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Menu
+                  fake-username
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>A</DropdownItem>
                   <DropdownItem>B</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>CD</DropdownItem>
+                  <DropdownItem tag={Link} to="/">Log out</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
