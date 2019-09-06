@@ -20,6 +20,8 @@ Project Members
 
 **Download node+npm for your os**
 **Install SQL Server Express**
+**Install mssql-tools**
+**Attach CodeconDB to the sql server instance**
 
 - `cd codecon`
   
@@ -54,6 +56,7 @@ Project Members
 # How to write React code:
 - React used to have stateless and stateful components.  There were referred to as functional vs class components.  Nowadays, functional components when used with React v>16.8 have access to hooks, which allow data management such that in the future functional components will have all the features of class components.  However, class components ***will*** work just fine and there are no plans to remove this.  If writing functional components with hooks, be careful as some third-party packages may ***not*** support them.
 
+
 # Installing SQL Server Express
 You can download SQL Server Express 2017 here: https://www.microsoft.com/en-us/sql-server/sql-server-editions-express
 If you are on Ubuntu 18.04 follow these steps instead
@@ -83,4 +86,102 @@ sudo /opt/mssql/bin/mssql-conf setup
 systemctl status mssql-server --no-pager
 
 At this point, SQL Server is running on your Ubuntu machine and is ready to use
+
+# Installing mssql-tools
+1. Import the public repository GPG keys.
+
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+2. Register the Microsoft Ubuntu repository.
+
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+
+3. Update the sources list and run the installation command with the unixODBC developer package.
+
+sudo apt-get update 
+sudo apt-get install mssql-tools unixodbc-dev
+
+# Optional: Add /opt/mssql-tools/bin/ to your PATH environment variable in a bash shell.
+
+To make sqlcmd/bcp accessible from the bash shell for login sessions, modify your PATH in the ~/.bash_profile file with the following command:
+
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+
+To make sqlcmd/bcp accessible from the bash shell for interactive/non-login sessions, modify the PATH in the ~/.bashrc file with the following command:
+
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+source ~/.bashrc
+
+# Updating mssql-tools
+
+To update to the latest version of mssql-tools run the following commands:
+
+sudo apt-get update 
+sudo apt-get install mssql-tools 
+
+# Connecting to a local database
+
+The following steps use sqlcmd to locally connect to your new SQL Server instance.
+
+Run sqlcmd with parameters for your SQL Server name (-S), the user name (-U), and the password (-P). The user name is SA and the password is the one you provided for the SA account during setup.
+
+sqlcmd -S localhost -U SA -P '<YourPassword>'
+
+If successful, you should get to a sqlcmd command prompt: 1>
+
+**Whenever you create a command in mssql-tools you must execute the command with a 'go' statement**
+
+# Retore database from backup (.bak file)	<-- easy start
+
+1. Detach CodeconDB if it is already running
+
+EXEC sp_detach_db 'CodeconDB', 'true'; 
+
+2. Restore the database 
+**With Replace is necessary when the CodeconDB.mdf and CodeconDB_log.ldf are in the same directory as CodeconDB.bak**
+
+RESTORE DATABASE CodeConDB
+FROM DISK = '<Path to repo>/codecon-422/codecon/data/CodeconDB.bak'
+WITH REPLACE
+
+# Attaching the database file to the sql server instance	<-- hard mode
+
+The files 'CodeconDB.mdf' and 'Codecon_log.ldf' need to be attached to the sql server to create the database. These files can be found in codecon-422/codecon/data.
+
+1. Execute the command:
+
+CREATE DATABASE CodeconDB
+    ON (FILENAME = '/<The path to repository>/codecon-422/codecon/data/CodeconDB.mdf'),
+    (FILENAME = '/<The path to repository>/codecon-422/codecon/data/CodeconDB_Log.ldf')
+    FOR ATTACH;
+GO
+
+2. After this execute the command:
+
+use CodeconDB
+GO
+
+in mssql-tools to switch the context to our database stub.
+
+
+
+# To make sure the database is operative:
+
+1. Run the command:
+
+SELECT name FROM sys.Databases
+GO
+
+to ensure that CodeconDB is in the sql server instance
+
+2. Run the commands:
+
+SELECT * FROM Project
+SELECT * FROM Task
+SELECT * from [User]
+GO
+
+to see sample entries in the database.
+There should be one sample entry in each table.
+
 
