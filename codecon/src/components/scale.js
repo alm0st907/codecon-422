@@ -3,6 +3,7 @@ import Konva from "konva";
 import { render } from "react-dom";
 import { Stage, Layer, Rect, Line } from "react-konva";
 
+//this is a class component
 export default class Scale extends Component { 
   //This command will allow for the defcon scale import into other pages
   render() { 

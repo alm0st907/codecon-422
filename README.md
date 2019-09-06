@@ -27,13 +27,8 @@ Project Members
   
 # Installing Dependencies for ReactJS:
 
-- **The package.json file should be updated such that you only have to do `npm i` and not run the next step.**
-- Run `npm i react react-dom react-scripts bootstrap reactstrap react-konva konva react-router-dom styled-components eslint eslint-plugin-react` as this will install the dependencies.  
+`bash install.sh`
 
-# Updating Packages:
-  
-- Run `npm i npm-check-updates -g`
-- It is important to check for updates when inside the codecon directory, so run `ncu -u` and then `npm install`
 
 # Building Locally:
 
@@ -55,6 +50,7 @@ Project Members
 
 # How to write React code:
 - React used to have stateless and stateful components.  There were referred to as functional vs class components.  Nowadays, functional components when used with React v>16.8 have access to hooks, which allow data management such that in the future functional components will have all the features of class components.  However, class components ***will*** work just fine and there are no plans to remove this.  If writing functional components with hooks, be careful as some third-party packages may ***not*** support them.
+
 
 
 # Installing SQL Server Express
@@ -183,5 +179,3 @@ GO
 
 to see sample entries in the database.
 There should be one sample entry in each table.
-
-
