@@ -60,10 +60,9 @@ export default class MainView extends Component {
         <br />
 
         <Row>
-
-          <mainContainer>
+          <StyledCol>
             <DefScale></DefScale>
-          </mainContainer>
+          </StyledCol>
 
           <StyledCol>
             Text
