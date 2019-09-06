@@ -8,7 +8,7 @@ export default class Scale extends Component {
   //This command will allow for the defcon scale import into other pages
   render() { 
     return (
-      <Stage width={window.innerWidth} height={window.innerHeight}>
+      <Stage width={window.innerWidth/2} height={window.innerHeight}>
         {/* stage is the canvas that you are drawing on */}
         <Layer> 
           {/* there can be multiple layers with use in konva */}
