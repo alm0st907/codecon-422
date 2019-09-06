@@ -80,7 +80,6 @@ export default class Login extends Component {
       this.state.validate_password.passwordState === "has-success";
     return (
       <div className="Login">
-        Login
         <Form className="formLogin" onSubmit={e => this.submitForm(e)}>
           {" "}
           {/*User's login information contained within this form*/}

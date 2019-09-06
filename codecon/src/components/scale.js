@@ -4,18 +4,18 @@ import { render } from "react-dom";
 import { Stage, Layer, Rect, Line } from "react-konva";
 
 //this is a class component
-export default class Scale extends Component { 
+export default class Scale extends Component {
   //This command will allow for the defcon scale import into other pages
-  render() { 
+  render() {
     return (
       <Stage width={window.innerWidth} height={window.innerHeight}>
         {/* stage is the canvas that you are drawing on */}
-        <Layer> 
+        <Layer>
           {/* there can be multiple layers with use in konva */}
           <Rect
             x={20}
-            y={100}
-            width={100}
+            y={99}
+            width={500}
             height={100}
             fill="blue"
             shadowBlur={10}
@@ -23,23 +23,23 @@ export default class Scale extends Component {
           <Rect
             x={20}
             y={200}
-            width={100}
+            width={500}
             height={100}
             fill="green"
             shadowBlur={10}
           />
           <Rect
             x={20}
-            y={300}
-            width={100}
+            y={301}
+            width={500}
             height={100}
             fill="yellow"
             shadowBlur={10}
           />
           <Rect
             x={20}
-            y={400}
-            width={100}
+            y={402}
+            width={500}
             height={100}
             fill="red"
             shadowBlur={10}
@@ -47,8 +47,8 @@ export default class Scale extends Component {
           {/*y is offset from top, x is offset from left side*/}
           <Rect
             x={20}
-            y={500}
-            width={100}
+            y={503}
+            width={500}
             height={100}
             fill="white"
             shadowBlur={10}
