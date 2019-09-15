@@ -8,7 +8,7 @@ namespace api
     public class Project
     {
         public string projectName { get; set; }
-        public int defconScale { get; set; }
+        public int defconScale { get; set; } //Scale goes from 5 - to - 1. least - to - most critical
         public DateTime dueDate { get; set; }
 
         public Project()
