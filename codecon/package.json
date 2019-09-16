@@ -6,7 +6,7 @@
     "bootstrap": "^4.3.1",
     "eslint": "^6.4.0",
     "eslint-plugin-react": "^7.14.3",
-    "konva": "^4.0.10",
+    "konva": "^4.0.12",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-konva": "^16.9.0-0",

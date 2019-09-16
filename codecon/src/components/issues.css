@@ -5,12 +5,10 @@ label {
     color: White;
 }
 
-div.Register
 
 /*outer div*/
-    {
+div.Issues {
     font-family: Ubuntu;
-    text-align: center;
     position: relative;
     margin: auto;
     top: 200px;
@@ -31,10 +29,6 @@ h3 {
     text-align: center;
 }
 
-.information {
-    float: right;
-}
-
-input {
+.issueInfo {
     text-align: center;
 }
