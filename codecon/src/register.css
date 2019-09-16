@@ -5,11 +5,12 @@ label {
     color: White;
 }
 
-div.Signup
+div.Register
 
 /*outer div*/
     {
     font-family: Ubuntu;
+    text-align: center;
     position: relative;
     margin: auto;
     top: 200px;
@@ -35,7 +36,7 @@ h3 {
     text-align: center;
 }
 
-#signup {
+.information {
     float: right;
 }
 

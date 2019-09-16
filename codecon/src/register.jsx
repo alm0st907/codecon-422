@@ -111,7 +111,7 @@ export default class Registration extends Component {
             <FormGroup>
               {" "}
               {/*Wraps form control with proper spacing and label/helptext/validation STATE https://react-bootstrap.github.io/components/forms/ */}
-              <Label>Email</Label>
+              <Label>Email (this will be your username)</Label>
               <Input
                 type="email"
                 name="email"
