@@ -6,6 +6,7 @@ import DefconScale from "./components/scale";
 import TestNav from "./components/admin-navbar";
 import Login from "./login";
 import UserNav from "./components/user-navbar"
+import MainView from "./components/main"
 //These routes will also be constant
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/scale" component={DefconScale} />
         <Route path="/navbar" component={TestNav} />
         <Route path="/usrnav" component={UserNav} />
+        <Route path="/main" component={MainView} />
         <Route component={NotFound} />{" "}
         {/*this will return the not found statement if none of the above paths are found-ALWAYS AT BOTTOM*/}
       </Switch>
