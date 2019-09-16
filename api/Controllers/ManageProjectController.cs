@@ -22,37 +22,74 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public User GetUserLogin(string userName, string passWd)
+        public JObject GetUserLogin(string userName, string passWd)
         {
             User retUser = new User();
+            JObject retJUser = new JObject();
             //retUser = GetUser(userName, passWd);
 
-            return retUser;
+            retJUser = JObject.FromObject(retUser);
+            return retJUser;
         }
 
         [HttpGet]
-        public Project GetProject(string projectName)
+        public JObject GetProject(string projectName)
         {
             Project retProj = new Project();
+            JObject retJProj = new JObject();
             //retProj = GetProj(projectName);
 
-            return retProj;
+            retJProj = JObject.FromObject(retProj);
+            return retJProj;
         }
 
-        public Task GetTask(string TaskName)
+        [HttpGet]
+        public JObject DummyGetProject()
+        {
+            DateTime date = new DateTime(2019, 9, 23);
+            Project retProj = new Project("Dummy Project", 2, date);
+            JObject retJProj = new JObject();
+            //retProj = GetProj(projectName);
+
+            retJProj = JObject.FromObject(retProj);
+            return retJProj;
+        }
+
+        [HttpGet]
+        public JObject GetTask(string TaskName)
         {
             Task retTask = new Task();
+            JObject retJTask = new JObject();
             //retTask = GetTask(TaskName);
 
-            return retTask;
+            retJTask = JObject.FromObject(retTask);
+            return retJTask;
         }
 
-        public List<Task> GetAllTasks(string projectName)
+        [HttpGet]
+        public JArray GetAllTasks(string projectName)
         {
             List<Task> retTaskList = new List<Task>();
+            JArray retJList = new JArray();
             //retTaskList = GetTasks(projectName);
 
-            return retTaskList;
+            retJList = JArray.FromObject(retTaskList);
+            return retJList;
+        }
+
+        [HttpGet]
+        public JArray DummyGetAllTasks(string projectName)
+        {
+            List<Task> retTaskList = new List<Task>();
+            Task t1 = new Task("Dummy Project", 1, "Slater", "Do All the Things", "Just do the things");
+            Task t2 = new Task("Dummy Project", 2, "Garrett", "Also Do All the Things", "Just do the things, you just gotta do it");
+            JArray retJList = new JArray();
+            //retTaskList = GetTasks(projectName);
+            retTaskList.Add(t1);
+            retTaskList.Add(t2);
+
+            retJList = JArray.FromObject(retTaskList);
+            return retJList;
         }
 
         [HttpPost]
