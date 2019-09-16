@@ -12,31 +12,37 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { async } from "q";
-import "./login.css";
+import "./register.css";
 
-export default class Login extends Component {
+export default class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
+      confirm_password: "",
+      phone_number: "",
       validate_email: {
         emailState: ""
       },
       validate_password: {
         passwordState: ""
+      },
+      validate_confirmpassword: {
+        passwordConfirmState: ""
+      },
+      validate_phone: {
+        phoneState: ""
       }
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  //These are just ways of adding some dynamic properties to the fields by auto changing warning from red to green
   validateEmail(e) {
     const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; /*https://github.com/alligatorio/Fancy-Form-Example/blob/master/src/App.js*/
     const { validate_email } = this.state;
     if (email_re.test(e.target.value)) {
-      /*if match*/
-      validate_email.emailState = "has-success";
+      /*if match*/ validate_email.emailState = "has-success";
     } else {
       validate_email.emailState = "has-danger";
     }
@@ -48,39 +54,57 @@ export default class Login extends Component {
     ); /*requires 8 characters: 1 UC, 1 LC, 1 #, 1 Special https://www.thepolyglotdeveloper.com/2015/05/use-regex-to-test-password-strength-in-javascript/*/
     const { validate_password } = this.state;
     if (password_re.test(e.target.value)) {
-      /*if match*/
-      validate_password.passwordState = "has-success";
+      /*if match*/ validate_password.passwordState = "has-success";
+      window.password_check = e.target.value;
     } else {
       validate_password.passwordState = "has-danger";
     }
     this.setState({ validate_password });
   }
+  validateConfirmedPassword(e) {
+    const { validate_confirmpassword } = this.state;
+    if (e.target.value.toString() === window.password_check) {
+      /*if match*/ validate_confirmpassword.passwordConfirmState =
+        "has-success";
+    } else {
+      validate_confirmpassword.passwordConfirmState = "has-danger";
+    }
+    this.setState({ validate_confirmpassword });
+  }
+  /*RE taken from: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html*/
 
   /*https://medium.com/@ian.mundy/async-event-handlers-in-react-a1590ed24399*/
   /*https://reactjs.org/docs/forms.html refer to Handling Multiple Inputs*/
   handleInputChange = async event => {
     const { target } = event;
     const value = target.type === "checkbox" ? target.checked : target.value;
-    const { name } = target;
+    const {
+      name
+    } = target; /*this directly correlates to the name of each input*/
     await this.setState({
       [name]: value
     });
   };
 
-  submitForm(e /*if event isnt handled explicitly, do not do the default*/) {
+  submitForm(e) /*if event isnt handled explicitly, do not do the default*/ {
     e.preventDefault();
     console.log(`Email: ${this.state.email}`);
     console.log(`Password: ${this.state.password}`);
+    console.log(`Confirmed Password: ${this.state.confirm_password}`);
+    console.log(`Phone Number: ${this.state.phone_number}`);
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, confirm_password, phone_number } = this.state;
     const isEnabled =
       this.state.validate_email.emailState === "has-success" &&
-      this.state.validate_password.passwordState === "has-success";
+      this.state.validate_password.passwordState === "has-success" &&
+      this.state.validate_confirmpassword.passwordConfirmState ===
+        "has-success";
     return (
-      <div className="Login">
-        <Form className="formLogin" onSubmit={e => this.submitForm(e)}>
+      <div className="Register">
+        <h3>Register</h3>
+        <Form className="Information" onSubmit={e => this.submitForm(e)}>
           {" "}
           {/*User's login information contained within this form*/}
           <Col>
@@ -91,8 +115,8 @@ export default class Login extends Component {
               <Input
                 type="email"
                 name="email"
-                id="loginEmail"
-                placeholder="user@mail.com"
+                id="login_email"
+                placeholder="Email"
                 value={email}
                 valid={this.state.validate_email.emailState === "has-success"}
                 invalid={this.state.validate_email.emailState === "has-danger"}
@@ -102,19 +126,19 @@ export default class Login extends Component {
                 }}
               />{" "}
               {/*name field used in JS*/}
+              <FormFeedback valid>Email looks good!</FormFeedback>
               <FormFeedback invalid>
-                This must be a valid email address.
+                Something is wrong with that email!
               </FormFeedback>
             </FormGroup>
           </Col>
           <Col>
             <FormGroup>
-              <Label for="login_password">Password</Label>
-              {/*masking*/}
+              <Label for="password">Password</Label>
               <Input
                 type="password"
-                name="password"
-                id="loginPassword"
+                /*masking*/ name="password"
+                id="login_password"
                 placeholder="Password"
                 value={password}
                 valid={
@@ -129,11 +153,44 @@ export default class Login extends Component {
                 }}
               />{" "}
               {/*name field used in JS*/}
+              <FormFeedback valid>Password looks good!</FormFeedback>
               <FormFeedback invalid>
-                Password requires at least: 1 lowercase, 1 uppercase, 1 number,
-                and 1 special character.
+                Make sure the password has 1 of each: uppercase, lowercase,
+                number, and special character
               </FormFeedback>
-              {/*TODO: set up user validation*/}
+              <FormText>
+                Password Reqs: 1 Uppercase Character, 1 Lowercase Character, 1
+                Number, 1 Special Character
+              </FormText>
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              <Label for="confirm_password">Confirm Password</Label>
+              <Input
+                type="password"
+                /*masking*/ name="confirm_password"
+                id="confirm_password"
+                placeholder="Confirm Password"
+                value={confirm_password}
+                valid={
+                  this.state.validate_confirmpassword.passwordConfirmState ===
+                  "has-success"
+                }
+                invalid={
+                  this.state.validate_confirmpassword.passwordConfirmState ===
+                  "has-danger"
+                }
+                onChange={e => {
+                  this.validateConfirmedPassword(e);
+                  this.handleInputChange(e);
+                }}
+              />{" "}
+              {/*name field used in JS*/}
+              <FormFeedback valid>Password looks good!</FormFeedback>
+              <FormFeedback invalid>
+                Make sure the password is the same that you entered above!
+              </FormFeedback>
             </FormGroup>
           </Col>
           <Col>
@@ -141,21 +198,11 @@ export default class Login extends Component {
               disabled={!isEnabled}
               tag={Link}
               to="/main"
-              id="signin"
+              id="signup"
               color="success"
               size="sm"
             >
-              Login
-            </Button>
-            {/* This can be whatever, I just thought maybe we could do a git signup */}
-            <Button
-              id="register"
-              tag={Link}
-              color="link"
-              size="sm"
-              to="/register"
-            >
-              Register an Account
+              Sign Up
             </Button>
           </Col>
         </Form>

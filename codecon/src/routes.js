@@ -5,6 +5,10 @@ import NotFound from "./notFound";
 import DefconScale from "./components/scale";
 import TestNav from "./components/navbar";
 import Login from "./login";
+import UserNav from "./components/user-navbar";
+import MainView from "./components/main";
+import Registration from "./register";
+
 //These routes will also be constant
 const Routes = () => {
   return (
@@ -14,6 +18,7 @@ const Routes = () => {
         {/*With a switch, it will only render ONE component*/}
         {/* Have it setup so login is first page displayed */}
         <Route exact path="/" component={Login} />{" "}
+        <Route path="/register" component={Registration} />
         {/*exact is required as it'll only render if the path is exactly what is defined, otherwise it defaults to the notfound component (aka 404)*/}
         <Route path="/scale" component={DefconScale} />
         <Route path="/navbar" component={TestNav} />
