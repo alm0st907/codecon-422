@@ -24,7 +24,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import AdminNav from "./admin-navbar";
-import DefScale from "./scale";
+
+import DefScale from "./scale"
 
 // can do text align in either the attrs via reactstrap or in css proper below
 const StyledCol = styled(Col).attrs({
@@ -37,10 +38,13 @@ const StyledCol = styled(Col).attrs({
   }
 `;
 
-const mainContainer = styled(Container).attrs({
-  height: 500,
-  width: 500
-})`
+
+const mainContainer = styled(Container).attrs ({
+    height: 500,
+    width: 500
+
+  })`
+
   {
       display: flex
       flex-direction: 'column',
@@ -64,6 +68,7 @@ export default class MainView extends Component {
           </StyledCol>
 
           <StyledCol>Text</StyledCol>
+
         </Row>
       </div>
     );
