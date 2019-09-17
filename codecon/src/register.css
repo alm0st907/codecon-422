@@ -5,11 +5,12 @@ label {
     color: White;
 }
 
-div.Login
+div.Register
 
 /*outer div*/
     {
     font-family: Ubuntu;
+    text-align: center;
     position: relative;
     margin: auto;
     top: 200px;
@@ -23,22 +24,17 @@ div.Login
     overflow: hidden;
 }
 
+
 h3 {
     font-family: Ubuntu;
     color: White;
     text-align: center;
 }
 
-.formLogin {
-    text-align: center;
-}
-
-#Register {
-    float: left;
-    color: lightgray;
-}
-
-#login {
+.information {
     float: right;
-    color: lightgray;
+}
+
+input {
+    text-align: center;
 }

@@ -1,0 +1,13 @@
+#grad1 {
+    /*set up for gold gradient and font*/
+    font-size: 8vw;
+    font-weight: 550;
+    font-family: "Ubuntu";
+    background: gold;
+    background: -webkit-linear-gradient(left, #8f6b29, #fde08d, #df9f28);
+    background: -o-linear-gradient(right, #8f6b29, #fde08d, #df9f28);
+    background: -moz-linear-gradient(right, #8f6b29, #fde08d, #df9f28);
+    background: linear-gradient(to right, #8f6b29, #fde08d, #df9f28);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
