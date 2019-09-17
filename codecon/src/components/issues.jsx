@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { async } from "q";
-
+import "./issues.css";
 export default class IssueInfo extends Component {
   constructor(props) {
     super(props);
@@ -69,6 +69,7 @@ export default class IssueInfo extends Component {
           </Col>
           <Col>
             <FormGroup>
+              {" "}
               <Label>Issue Date</Label>
               <Input
                 type="date"
@@ -85,6 +86,7 @@ export default class IssueInfo extends Component {
           </Col>
           <Col>
             <FormGroup>
+              {" "}
               <Label>Issue Description</Label>
               <Input
                 type="textarea"
