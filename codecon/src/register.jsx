@@ -21,7 +21,6 @@ export default class Registration extends Component {
       email: "",
       password: "",
       confirm_password: "",
-      phone_number: "",
       validate_email: {
         emailState: ""
       },
@@ -30,9 +29,6 @@ export default class Registration extends Component {
       },
       validate_confirmpassword: {
         passwordConfirmState: ""
-      },
-      validate_phone: {
-        phoneState: ""
       }
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -91,11 +87,10 @@ export default class Registration extends Component {
     console.log(`Email: ${this.state.email}`);
     console.log(`Password: ${this.state.password}`);
     console.log(`Confirmed Password: ${this.state.confirm_password}`);
-    console.log(`Phone Number: ${this.state.phone_number}`);
   }
 
   render() {
-    const { email, password, confirm_password, phone_number } = this.state;
+    const { email, password, confirm_password } = this.state;
     const isEnabled =
       this.state.validate_email.emailState === "has-success" &&
       this.state.validate_password.passwordState === "has-success" &&
