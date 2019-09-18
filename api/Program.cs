@@ -15,6 +15,8 @@ namespace api
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            QueryEngine queryEngine = new QueryEngine();
+            queryEngine.ConnectToServer();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

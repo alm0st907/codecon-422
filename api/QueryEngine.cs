@@ -3,36 +3,71 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace api
 {
     public class QueryEngine
     {
-        private string ConnectionString;
-        private void ConnectToServer()
-        {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost";
-            builder.UserID = "SA";
-            //builder.Password = "your_password";
-            builder.InitialCatalog = "CodeconDB";
-            ConnectionString = builder.ConnectionString;        
+        SqlConnection serverConnection;
+        DataTable ProjectTable;
+        DataTable UserTable;
+        DataTable TaskTable;
 
-            // need to add a reference to System.Data.Linq to create the DataCOntext.
-            // with the DataContex we will be able to represent entries in the database as classes
-            // We will also be able to run Language integrated queries on these object and the database
-            // to streamline database integration
+        public void ConnectToServer()
+        {
+            var constring = @"Data Source=.\SQLEXPRESS;Database=CodeconDB;Integrated Security=SSPI";        // This may need to be modified if running on non-windows OS
+            serverConnection = new SqlConnection(constring);
+
+            ProjectTable = new DataTable();
+            UserTable = new DataTable();
+            TaskTable = new DataTable();
+
+            RetrieveTables();
         }
 
-        public User GetUser(string username)
-        {}
+        private void RetrieveTables()
+        {
+            string query = "select * from Project";
+            SqlCommand cmd = new SqlCommand(query, serverConnection);
+            serverConnection.Open();
 
-        public void AddUser(User newUser)
+            // create data adapter to read table into DataTable object
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ProjectTable);
+
+            query = "select * from [User]";
+            cmd = new SqlCommand(query, serverConnection);
+
+            da = new SqlDataAdapter(cmd);
+            da.Fill(UserTable);
+
+            query = "select * from Task";
+            cmd = new SqlCommand(query, serverConnection);
+
+            da = new SqlDataAdapter(cmd);
+            da.Fill(TaskTable);
+
+            serverConnection.Close();
+        }
+        
+        
+        public User GetUser(string username, string password)
+        {
+            User fetchedUser = new User();
+
+            DataRow fetchedUserRow = from Row in UserTable.AsEnumerable()
+                                where Row.Field<string>("username") == username
+                                where Row.Field<string>("password") == password
+                                select Row;
+
+
+
+        }
+        
+        
+        public void AddUser(User newUser)   // needs to support generating a user id 
         {}
         public void RemoveUser(string username)
         {}
@@ -56,6 +91,7 @@ namespace api
         
         public List<Task> GetTasks(string projectName)
         {}
+        */
 
     }
 	
