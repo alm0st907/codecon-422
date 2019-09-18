@@ -26,6 +26,14 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //allows cross origin requests from any location so we can actually test, can be specified better later
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +50,8 @@ namespace api
             }
 
             app.UseHttpsRedirection();
+            //enforces our cors policy as a default
+            app.UseCors("MyPolicy");
             app.UseMvc(routes =>
             {
                 routes

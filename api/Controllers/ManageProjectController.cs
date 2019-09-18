@@ -78,18 +78,27 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JArray DummyGetAllTasks(string projectName)
+        public JObject DummyGetAllTasks(string projectName)
         {
             List<Task> retTaskList = new List<Task>();
-            Task t1 = new Task("Dummy Project", 1, "Slater", "Do All the Things", "Just do the things");
-            Task t2 = new Task("Dummy Project", 2, "Garrett", "Also Do All the Things", "Just do the things, you just gotta do it");
+            Task t1 = new Task("Dummy Project", 1, "Slater", "Make the things pretty", "Just do the things");
+            Task t2 = new Task("Dummy Project", 2, "Garrett", "Do some of all the things", "Just do the things, you just gotta do it");
+            Task t3 = new Task("Dummy Project", 3, "Jeff", "Serve some things", "Just do the things, you just gotta do it");
+            Task t4  = new Task("Dummy Project", 4, "Mike", "Just remember the things", "Just do the things, you just gotta do it");
+            Task t5 = new Task("Dummy Project", 5, "Cai", "Teach the class", "Because reasons.");
             JArray retJList = new JArray();
             //retTaskList = GetTasks(projectName);
             retTaskList.Add(t1);
             retTaskList.Add(t2);
+            retTaskList.Add(t3);
+            retTaskList.Add(t4);
+            retTaskList.Add(t5);
 
+            // create jobject to access the array in a more "standard" way seen in SO and other websites
             retJList = JArray.FromObject(retTaskList);
-            return retJList;
+            JObject finalRet = new JObject();
+            finalRet.Add("items", retJList);
+            return finalRet;
         }
 
         [HttpPost]

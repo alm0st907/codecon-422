@@ -56,9 +56,6 @@ export default class Navigation extends Component {
         <Navbar color="dark" dark expand="md">
           {" "}
           {/*md is medium*/}
-          <NavbarBrand id="grad1" href="#home">
-            project-name-placeholder
-          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} data-toggle="collapsed" />
           <Collapse
             isOpen={this.state.isOpen}

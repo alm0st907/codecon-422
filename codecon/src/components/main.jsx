@@ -25,7 +25,9 @@ import { Link } from "react-router-dom";
 
 import AdminNav from "./admin-navbar";
 
-import DefScale from "./scale"
+import DefScale from "./scale";
+
+import DispTask from "./dispIssues";
 
 // can do text align in either the attrs via reactstrap or in css proper below
 const StyledCol = styled(Col).attrs({
@@ -67,7 +69,9 @@ export default class MainView extends Component {
             <DefScale></DefScale>
           </StyledCol>
 
-          <StyledCol>Text</StyledCol>
+          <StyledCol>
+            <DispTask></DispTask>
+          </StyledCol>
 
         </Row>
       </div>
