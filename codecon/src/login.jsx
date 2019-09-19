@@ -30,6 +30,23 @@ export default class Login extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  //assembling for post request goes here
+  postUp(e) {
+    console.log("clicked the button");
+    //need to fill out the data, populate the url with proper url for the action
+    e.preventDefault();
+    var data = { "username" : "testname","email":"some email @ email .com", "password":"password.com"};
+
+    fetch('https://localhost:5001/manageproject/createuser', {
+      method: 'post',
+      body: JSON.stringify(data)
+    });
+
+    console.log(data);
+
+    //if we get the return we like from the server, then handle the link redirect here
+  }
+
   //These are just ways of adding some dynamic properties to the fields by auto changing warning from red to green
   validateEmail(e) {
     const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; /*https://github.com/alligatorio/Fancy-Form-Example/blob/master/src/App.js*/
@@ -144,6 +161,7 @@ export default class Login extends Component {
               id="signin"
               color="success"
               size="sm"
+              onClick={this.postUp}
             >
               Login
             </Button>
