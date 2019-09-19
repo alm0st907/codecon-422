@@ -31,8 +31,19 @@ export default class Login extends Component {
   }
 
   //assembling for post request goes here
-  postUp() {
+  postUp(e) {
     console.log("clicked the button");
+    //need to fill out the data, populate the url with proper url for the action
+    var data = { "username" : "testname","email":"some email @ email .com", "password":"password.com"};
+
+    fetch('https://localhost:44360/manageproject/createuser', {
+      method: 'post',
+      body: JSON.stringify(data)
+    }).then(function(response) {
+      return response.json();
+    });
+
+    //if we get the return we like from the server, then handle the link redirect here
   }
 
   //These are just ways of adding some dynamic properties to the fields by auto changing warning from red to green
