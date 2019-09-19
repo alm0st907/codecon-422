@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Data.Common;
+
 
 namespace api
 {
@@ -141,7 +141,6 @@ namespace api
                 return -1;
             }
         }
-
         
         public int RemoveUser(string username)
         {

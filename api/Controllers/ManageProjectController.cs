@@ -14,6 +14,13 @@ namespace api.Controllers
  
     public class ManageProjectController : Controller
     {
+
+        QueryEngine engine = new QueryEngine();
+        public ManageProjectController()
+        {
+            engine.ConnectToServer();
+        }
+        
         // GET: /<controller>/
         [HttpGet]
         public string Index()
@@ -118,6 +125,7 @@ namespace api.Controllers
                     
                     User newUser = new User(userHolder.ToString(), emailHolder.ToString(), emailHolder.ToString(), 0);
                     //check = AddUser(newUser);
+                    engine.AddUser(newUser);
                 }
             }
             catch (Exception e) 
