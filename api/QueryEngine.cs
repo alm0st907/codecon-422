@@ -17,7 +17,7 @@ namespace api
 
         public void ConnectToServer()
         {
-            var constring = @"Data Source=.\SQLEXPRESS;Database=CodeconDB;Integrated Security=SSPI";        // This may need to be modified if running on non-windows OS
+            var constring = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True"; // This may need to be modified if running on non-windows OS
             serverConnection = new SqlConnection(constring);
 
             ProjectTable = new DataTable();
@@ -57,16 +57,34 @@ namespace api
         {
             User fetchedUser = new User();
 
-            DataRow fetchedUserRow = from Row in UserTable.AsEnumerable()
-                                where Row.Field<string>("username") == username
-                                where Row.Field<string>("password") == password
-                                select Row;
+            try
+            {
+                var fetchedUserRow = from Row in UserTable.AsEnumerable()
+                                     where Row.Field<string>("username") == username
+                                     where Row.Field<string>("password") == password
+                                     select Row;
 
+                fetchedUser.email = (from Row in UserTable.AsEnumerable()
+                                    where Row.Field<string>("username") == username
+                                    where Row.Field<string>("password") == password
+                                    select Row.Field<string>("email")).ToList().ElementAt(0);
 
+                fetchedUser.id = (from Row in UserTable.AsEnumerable()
+                                  where Row.Field<string>("username") == username
+                                  where Row.Field<string>("password") == password
+                                  select Row.Field<int>("id")).ToList().ElementAt(0);
 
+                fetchedUser.username = username;
+                fetchedUser.passWord = password;
+            }
+            catch (SqlException e)
+            {
+                return null;
+            }
+            return fetchedUser;
         }
         
-        
+        /*
         public void AddUser(User newUser)   // needs to support generating a user id 
         {}
         public void RemoveUser(string username)
