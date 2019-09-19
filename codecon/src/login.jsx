@@ -30,6 +30,11 @@ export default class Login extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  //assembling for post request goes here
+  postUp() {
+    console.log("clicked the button");
+  }
+
   //These are just ways of adding some dynamic properties to the fields by auto changing warning from red to green
   validateEmail(e) {
     const email_re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; /*https://github.com/alligatorio/Fancy-Form-Example/blob/master/src/App.js*/
@@ -144,6 +149,7 @@ export default class Login extends Component {
               id="signin"
               color="success"
               size="sm"
+              onClick={this.postUp}
             >
               Login
             </Button>
