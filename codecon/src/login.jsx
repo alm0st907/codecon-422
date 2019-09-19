@@ -34,14 +34,15 @@ export default class Login extends Component {
   postUp(e) {
     console.log("clicked the button");
     //need to fill out the data, populate the url with proper url for the action
+    e.preventDefault();
     var data = { "username" : "testname","email":"some email @ email .com", "password":"password.com"};
 
-    fetch('https://localhost:44360/manageproject/createuser', {
+    fetch('https://localhost:5001/manageproject/createuser', {
       method: 'post',
       body: JSON.stringify(data)
-    }).then(function(response) {
-      return response.json();
     });
+
+    console.log(data);
 
     //if we get the return we like from the server, then handle the link redirect here
   }
