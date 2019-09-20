@@ -12,6 +12,7 @@ import Home from "./homePage";
 import Issues from "./components/issues";
 
 import MainView from "./components/main";
+import IssueView from "./components/issueview";
 
 import TestIssues from "./components/dispIssues"
 
@@ -34,7 +35,7 @@ const Routes = () => {
         <Route path="/register" component={Registration} />
 
         <Route path="/main" component={MainView} />
-        <Route path="/issueview" component={TestIssues} />
+        <Route path="/issueview" component={IssueView} />
 
         <Route component={NotFound} />{" "}
         {/*this will return the not found statement if none of the above paths are found-ALWAYS AT BOTTOM*/}

@@ -76,6 +76,10 @@ export default class Navigation extends Component {
                     Task Only View
                   </DropdownItem>
                   <DropdownItem divider />
+                  <DropdownItem tag={Link} to="/Main">
+                     Main Page
+                  </DropdownItem>
+                  <DropdownItem divider />
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav inNavbar>

@@ -102,7 +102,7 @@ export default class IssueInfo extends Component {
             </FormGroup>
           </Col>
           <Col>
-            <Button tag={Link} to="/scale" id="scale" color="success" size="md">
+            <Button tag={Link} to="/main" id="scale" color="success" size="md">
               Submit
             </Button>
           </Col>

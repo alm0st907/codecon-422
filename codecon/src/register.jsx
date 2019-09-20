@@ -32,6 +32,7 @@ export default class Registration extends Component {
       }
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.postUpFixed = this.postUpFixed.bind(this);
   }
 
   validateEmail(e) {
@@ -89,24 +90,22 @@ export default class Registration extends Component {
     console.log(`Confirmed Password: ${this.state.confirm_password}`);
   }
 
-  postUp(e) {
-    console.log("clicked the reg btn");
+  postUpFixed(e) {
+    console.log("clicked the button");
     //need to fill out the data, populate the url with proper url for the action
-    e.preventDefault();
+    // e.preventDefault();
     var data = {
-      //username: "testname",
-      email: this.email,
-      password: this.password,
-      confirm_password: this.confirm_password
+      username: this.state.email,
+      email: this.state.email,
+      password: this.state.password
     };
 
-    fetch("https://localhost:3000/manageproject/CreateUser", {
+    fetch("https://localhost:44360/manageproject/CreateUser", {
       method: "post",
       body: JSON.stringify(data)
     });
-
-    console.log(data);
   }
+
   render() {
     const { email, password, confirm_password } = this.state;
     const isEnabled =
@@ -214,6 +213,7 @@ export default class Registration extends Component {
               id="signup"
               color="success"
               size="sm"
+              onClick={this.postUpFixed}
             >
               Sign Up
             </Button>
