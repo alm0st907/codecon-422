@@ -29,15 +29,29 @@ namespace api.Controllers
         }
 
         [HttpGet, HttpPost]
-        public JObject GetUserLogin(string userName, string passWd)
+        public async void GetUserLogin()
         {
 
-            User retUser = new User();
-            JObject retJUser = new JObject();
-            retUser = engine.GetUser(userName, passWd);
+            try
+            {
+                using (var streamReader = new HttpRequestStreamReader(Request.Body, Encoding.UTF8))
+                using (var jsonReader = new JsonTextReader(streamReader))
+                {
+                    var json = await JObject.LoadAsync(jsonReader);
+                    User retUser = new User();
+                    JObject retJUser = new JObject();
 
-            retJUser = JObject.FromObject(retUser);
-            return retJUser;
+                    retUser = engine.GetUser(json["username"].ToString(), json["password"].ToString());
+
+                    retJUser = JObject.FromObject(retUser);
+
+                }
+
+            }
+            catch
+            {
+
+            }
         }
 
         [HttpGet]

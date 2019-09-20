@@ -13,7 +13,6 @@ import {
 import { Link } from "react-router-dom";
 import { async } from "q";
 import "./login.css";
-
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -28,17 +27,22 @@ export default class Login extends Component {
       }
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.postUp = this.postUp.bind(this);
   }
 
   //assembling for post request goes here
   postUp(e) {
     console.log("clicked the button");
     //need to fill out the data, populate the url with proper url for the action
-    e.preventDefault();
-    var data = { "username" : "testname","email":"some email @ email .com", "password":"password.com"};
+    // e.preventDefault();
+    var data = {
+      username: this.state.email,
+      // email: this.state.email,
+      password: this.state.password
+    };
 
-    fetch('https://localhost:5001/manageproject/createuser', {
-      method: 'post',
+    fetch("https://localhost:44360/manageproject/getuserlogin", {
+      method: "post",
       body: JSON.stringify(data)
     });
 
