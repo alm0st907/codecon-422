@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace api.Controllers
 {
- 
+
     public class ManageProjectController : Controller
     {
 
@@ -20,7 +20,7 @@ namespace api.Controllers
         {
             engine.ConnectToServer();
         }
-        
+
         // GET: /<controller>/
         [HttpGet]
         public string Index()
@@ -28,15 +28,30 @@ namespace api.Controllers
             return "oops! something went wrong!\n";
         }
 
-        [HttpGet]
-        public JObject GetUserLogin(string userName, string passWd)
+        [HttpGet, HttpPost]
+        public async void GetUserLogin()
         {
-            User retUser = new User();
-            JObject retJUser = new JObject();
-            //retUser = GetUser(userName, passWd);
 
-            retJUser = JObject.FromObject(retUser);
-            return retJUser;
+            try
+            {
+                using (var streamReader = new HttpRequestStreamReader(Request.Body, Encoding.UTF8))
+                using (var jsonReader = new JsonTextReader(streamReader))
+                {
+                    var json = await JObject.LoadAsync(jsonReader);
+                    User retUser = new User();
+                    JObject retJUser = new JObject();
+
+                    retUser = engine.GetUser(json["username"].ToString(), json["password"].ToString());
+
+                    retJUser = JObject.FromObject(retUser);
+
+                }
+
+            }
+            catch
+            {
+
+            }
         }
 
         [HttpGet]
@@ -44,7 +59,7 @@ namespace api.Controllers
         {
             Project retProj = new Project();
             JObject retJProj = new JObject();
-            //retProj = GetProj(projectName);
+            retProj = engine.GetProj(projectName);
 
             retJProj = JObject.FromObject(retProj);
             return retJProj;
@@ -67,7 +82,7 @@ namespace api.Controllers
         {
             Task retTask = new Task();
             JObject retJTask = new JObject();
-            //retTask = GetTask(TaskName);
+            retTask = engine.GetTask(TaskName);
 
             retJTask = JObject.FromObject(retTask);
             return retJTask;
@@ -78,7 +93,7 @@ namespace api.Controllers
         {
             List<Task> retTaskList = new List<Task>();
             JArray retJList = new JArray();
-            //retTaskList = GetTasks(projectName);
+            retTaskList = engine.GetTasks(projectName);
 
             retJList = JArray.FromObject(retTaskList);
             return retJList;
@@ -91,7 +106,7 @@ namespace api.Controllers
             Task t1 = new Task("Dummy Project", 1, "Slater", "Make the things pretty", "Just do the things");
             Task t2 = new Task("Dummy Project", 2, "Garrett", "Do some of all the things", "Just do the things, you just gotta do it");
             Task t3 = new Task("Dummy Project", 3, "Jeff", "Serve some things", "Just do the things, you just gotta do it");
-            Task t4  = new Task("Dummy Project", 4, "Mike", "Just remember the things", "Just do the things, you just gotta do it");
+            Task t4 = new Task("Dummy Project", 4, "Mike", "Just remember the things", "Just do the things, you just gotta do it");
             Task t5 = new Task("Dummy Project", 5, "Cai", "Teach the class", "Because reasons.");
             JArray retJList = new JArray();
             //retTaskList = GetTasks(projectName);
@@ -109,12 +124,12 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public  async void CreateUser()
+        public async void CreateUser()
         {
             int check;
-            try 
+            try
             {
-                
+
                 using (var streamReader = new HttpRequestStreamReader(Request.Body, Encoding.UTF8))
                 using (var jsonReader = new JsonTextReader(streamReader))
                 {
@@ -122,13 +137,13 @@ namespace api.Controllers
                     var userHolder = json["username"];
                     var emailHolder = json["email"];
                     var passwordHolder = json["password"];
-                    
+
                     User newUser = new User(userHolder.ToString(), emailHolder.ToString(), emailHolder.ToString(), 0);
                     //check = AddUser(newUser);
                     engine.AddUser(newUser);
                 }
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 // handle exception        
             }
@@ -149,8 +164,8 @@ namespace api.Controllers
                     var nameHolder = json["projectName"];
                     var DateHolder = json["launchDate"];
 
-                    Project newProject = new Project(nameHolder.ToString(), 5 , DateTime.Parse(DateHolder.ToString())); //"minimum" or lowest DEFCON value is 5
-                    //check = AddProject(newProject);
+                    Project newProject = new Project(nameHolder.ToString(), 5, DateTime.Parse(DateHolder.ToString())); //"minimum" or lowest DEFCON value is 5
+                    check = engine.AddProj(newProject);
                 }
             }
             catch (Exception e)
@@ -177,9 +192,9 @@ namespace api.Controllers
                     var taskNameHolder = json["taskName"];
                     var taskDescriptionHolder = json["description"];
 
-                    Task newTask = new Task(projectNameHolder.ToString(), int.Parse(escalationValHolder.ToString()), workerNameHolder.ToString(), taskNameHolder.ToString(), taskDescriptionHolder.ToString());
-                                                             
-                    //check = AddTask(newTask);
+                    Task newTask = new Task(projectNameHolder.ToString(), int.Parse((escalationValHolder.ToString())), workerNameHolder.ToString(), taskNameHolder.ToString(), taskDescriptionHolder.ToString());
+
+                    check = engine.AddTask(newTask);
                 }
             }
             catch (Exception e)

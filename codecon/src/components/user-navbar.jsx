@@ -71,8 +71,8 @@ export default class UserNavigation extends Component {
                   fake-username
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>A</DropdownItem>
-                  <DropdownItem>B</DropdownItem>
+                  <DropdownItem tag={Link} to="/Issues">Create Tasks</DropdownItem>
+                  <DropdownItem tag={Link} to="/issueview">Task Only View</DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem tag={Link} to="/">Log out</DropdownItem>
                 </DropdownMenu>
