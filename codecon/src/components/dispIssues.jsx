@@ -36,7 +36,7 @@ export default class DisplayIssues extends Component {
   }
   componentDidMount() {
     console.log("try fetch");
-    fetch("https://localhost:3000/main/manageproject/dummygetalltasks")
+    fetch("https://localhost:44360/manageproject/dummygetalltasks")
       .then(res => res.json())
       .then(
         result => {
