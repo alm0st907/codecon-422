@@ -27,6 +27,7 @@ export default class Login extends Component {
       }
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.postUp = this.postUp.bind(this);
   }
 
   //assembling for post request goes here
@@ -36,12 +37,12 @@ export default class Login extends Component {
     e.preventDefault();
     var data = {
       //username: "testname",
-      email: this.email,
-      password: this.password
+      email: this.state.email,
+      password: this.state.password
     };
 
     fetch("https://localhost:3000/manageproject/GetUserLogin", {
-      method: "post",
+      method: "get",
       body: JSON.stringify(data)
     });
 
