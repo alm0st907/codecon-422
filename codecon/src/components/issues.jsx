@@ -18,9 +18,13 @@ export default class IssueInfo extends Component {
     this.state = {
       issueName: "",
       issueDate: "",
-      issueDescription: ""
+      issueDescription: "",
+      issueAssignee: "",
+      issueDefconLevel: "",
+      issueProject: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.postUp = this.postUp.bind(this);
   }
 
   handleInputChange = async event => {
@@ -38,11 +42,44 @@ export default class IssueInfo extends Component {
     e.preventDefault();
     console.log(`issueName: ${this.state.issueName}`);
     console.log(`issueDate: ${this.state.issueDate}`);
+    console.log(`issueAssignee: ${this.state.issueAssignee}`);
+    console.log(`issueDefconLevel: ${this.state.issueDefconLevel}`);
     console.log(`issueDescription: ${this.state.issueDescription}`);
+    console.log(`issueProject: ${this.state.issueProject}`);
+  }
+
+  postUp(e) {
+    console.log("clicked the button");
+    //need to fill out the data, populate the url with proper url for the action
+    e.preventDefault();
+    var data = {
+      //username: "testname",
+      issueProject: this.state.issueProject,
+      issueDefconLevel: this.state.issueDefconLevel,
+      issueAssignee: this.state.issueAssignee,
+      issueName: this.state.issueName,
+      issueDescription: this.state.issueDescription,
+      issueDate: "12/01/2019"
+    };
+
+    fetch("https://localhost:3000/manageproject/CreateTask", {
+      method: "post",
+      body: JSON.stringify(data)
+    });
+
+    console.log(data);
+
+    //if we get the return we like from the server, then handle the link redirect here
   }
 
   render() {
-    const { issueName, issueDate, issueDescription } = this.state;
+    const {
+      issueName,
+      issueDate,
+      issueDescription,
+      issueAssignee,
+      issueDefconLevel
+    } = this.state;
     return (
       <div className="Issues">
         <h3>Issue</h3>
@@ -87,6 +124,40 @@ export default class IssueInfo extends Component {
           <Col>
             <FormGroup>
               {" "}
+              <Label>Issue Assignee</Label>
+              <Input
+                type="string"
+                /*masking*/ name="issueAssignee"
+                id="issueAssignee"
+                placeholder="John Doe"
+                value={issueAssignee}
+                onChange={e => {
+                  this.handleInputChange(e);
+                }}
+              />{" "}
+              {/*name field used in JS*/}
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              {" "}
+              <Label>Issue Defcon Level</Label>
+              <Input
+                type="number"
+                /*masking*/ name="issueDefconLevel"
+                id="issueDefconLevel"
+                placeholder="1-5"
+                value={issueDefconLevel}
+                onChange={e => {
+                  this.handleInputChange(e);
+                }}
+              />{" "}
+              {/*name field used in JS*/}
+            </FormGroup>
+          </Col>
+          <Col>
+            <FormGroup>
+              {" "}
               <Label>Issue Description</Label>
               <Input
                 type="textarea"
@@ -102,7 +173,7 @@ export default class IssueInfo extends Component {
             </FormGroup>
           </Col>
           <Col>
-            <Button tag={Link} to="/scale" id="scale" color="success" size="md">
+            <Button tag={Link} to="/main" id="scale" color="success" size="md">
               Submit
             </Button>
           </Col>
