@@ -100,7 +100,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JObject DummyGetAllTasks(string projectName)
+        public JObject DummyGetAllTasks()
         {
             List<Task> retTaskList = new List<Task>();
             Task t1 = new Task("Dummy Project", 1, "Slater", "Make the things pretty", "Just do the things");

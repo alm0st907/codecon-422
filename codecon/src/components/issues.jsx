@@ -54,15 +54,15 @@ export default class IssueInfo extends Component {
     e.preventDefault();
     var data = {
       //username: "testname",
-      issueProject: this.state.issueProject,
-      issueDefconLevel: this.state.issueDefconLevel,
-      issueAssignee: this.state.issueAssignee,
-      issueName: this.state.issueName,
-      issueDescription: this.state.issueDescription,
+      projectName: this.state.issueProject,
+      escalationValue: this.state.issueDefconLevel,
+      assignedWorker: this.state.issueAssignee,
+      taskName: this.state.issueName,
+      description: this.state.issueDescription,
       issueDate: "12/01/2019"
     };
 
-    fetch("https://localhost:3000/manageproject/CreateTask", {
+    fetch("https://localhost:44360/manageproject/CreateTask", {
       method: "post",
       body: JSON.stringify(data)
     });
