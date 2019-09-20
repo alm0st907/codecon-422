@@ -34,7 +34,7 @@ const Routes = () => {
         <Route path="/register" component={Registration} />
 
         <Route path="/main" component={MainView} />
-        <Route path="/test" component={TestIssues} />
+        <Route path="/issueview" component={TestIssues} />
 
         <Route component={NotFound} />{" "}
         {/*this will return the not found statement if none of the above paths are found-ALWAYS AT BOTTOM*/}

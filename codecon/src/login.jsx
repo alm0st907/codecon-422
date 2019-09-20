@@ -34,15 +34,15 @@ export default class Login extends Component {
   postUp(e) {
     console.log("clicked the button");
     //need to fill out the data, populate the url with proper url for the action
-    e.preventDefault();
+    // e.preventDefault();
     var data = {
-      //username: "testname",
-      email: this.state.email,
+      username: this.state.email,
+      // email: this.state.email,
       password: this.state.password
     };
 
-    fetch("https://localhost:3000/manageproject/GetUserLogin", {
-      method: "get",
+    fetch("https://localhost:44360/manageproject/getuserlogin", {
+      method: "post",
       body: JSON.stringify(data)
     });
 

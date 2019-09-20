@@ -68,10 +68,14 @@ export default class Navigation extends Component {
                   Menu
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem onClick={this.toggleModal}>B</DropdownItem>
-
-                  <DropdownItem>A</DropdownItem>
-                  <DropdownItem>B</DropdownItem>
+                  <DropdownItem tag={Link} to="/Issues">
+                    Create Tasks
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem tag={Link} to="/issueview">
+                    Task Only View
+                  </DropdownItem>
+                  <DropdownItem divider />
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav inNavbar>
@@ -79,10 +83,9 @@ export default class Navigation extends Component {
                   fake-username
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>A</DropdownItem>
-                  <DropdownItem>B</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem tag={Link} to="/">Log out</DropdownItem>
+                  <DropdownItem tag={Link} to="/">
+                    Log out
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
