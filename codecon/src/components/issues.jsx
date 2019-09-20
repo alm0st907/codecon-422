@@ -51,18 +51,17 @@ export default class IssueInfo extends Component {
   postUp(e) {
     console.log("clicked the button");
     //need to fill out the data, populate the url with proper url for the action
-    e.preventDefault();
     var data = {
       //username: "testname",
-      projectName: this.state.issueProject,
+      projectName: "Placeholder",
       escalationValue: this.state.issueDefconLevel,
       assignedWorker: this.state.issueAssignee,
       taskName: this.state.issueName,
       description: this.state.issueDescription,
-      issueDate: "12/01/2019"
+      issueDate: this.state.issueDate
     };
 
-    fetch("https://localhost:44360/manageproject/CreateTask", {
+    fetch("https://localhost:5001/manageproject/CreateTask", {
       method: "post",
       body: JSON.stringify(data)
     });
