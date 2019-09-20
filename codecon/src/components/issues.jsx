@@ -173,7 +173,14 @@ export default class IssueInfo extends Component {
             </FormGroup>
           </Col>
           <Col>
-            <Button tag={Link} to="/main" id="scale" color="success" size="md">
+            <Button
+              tag={Link}
+              to="/main"
+              id="scale"
+              color="success"
+              size="md"
+              onClick={this.postUp}
+            >
               Submit
             </Button>
           </Col>
