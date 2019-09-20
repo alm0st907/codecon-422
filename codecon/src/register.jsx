@@ -89,6 +89,24 @@ export default class Registration extends Component {
     console.log(`Confirmed Password: ${this.state.confirm_password}`);
   }
 
+  postUp(e) {
+    console.log("clicked the reg btn");
+    //need to fill out the data, populate the url with proper url for the action
+    e.preventDefault();
+    var data = {
+      //username: "testname",
+      email: this.email,
+      password: this.password,
+      confirm_password: this.confirm_password
+    };
+
+    fetch("https://localhost:3000/manageproject/CreateUser", {
+      method: "post",
+      body: JSON.stringify(data)
+    });
+
+    console.log(data);
+  }
   render() {
     const { email, password, confirm_password } = this.state;
     const isEnabled =
