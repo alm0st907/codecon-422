@@ -1,7 +1,7 @@
 import { Shape, ShapeConfig } from '../Shape';
 import { GetSet, IRect } from '../types';
 export interface ImageConfig extends ShapeConfig {
-    image: ImageBitmapSource;
+    image: CanvasImageSource | undefined;
     crop?: IRect;
 }
 export declare class Image extends Shape<ImageConfig> {
@@ -11,7 +11,7 @@ export declare class Image extends Shape<ImageConfig> {
     getWidth(): any;
     getHeight(): any;
     static fromURL(url: any, callback: any): void;
-    image: GetSet<CanvasImageSource, this>;
+    image: GetSet<CanvasImageSource | undefined, this>;
     crop: GetSet<IRect, this>;
     cropX: GetSet<number, this>;
     cropY: GetSet<number, this>;

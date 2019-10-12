@@ -1,15 +1,11 @@
 import { Layer } from './Layer';
+import { IFrame, AnimationFn } from './types';
 export declare class Animation {
-    func: () => boolean;
+    func: AnimationFn;
     id: number;
     layers: Layer[];
-    frame: {
-        time: number;
-        timeDiff: number;
-        lastTime: any;
-        frameRate: number;
-    };
-    constructor(func: any, layers?: any);
+    frame: IFrame;
+    constructor(func: AnimationFn, layers?: any);
     setLayers(layers: any): this;
     getLayers(): Layer[];
     addLayer(layer: any): boolean;

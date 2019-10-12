@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "konva": "^4.0.13",
+    "konva": "^4.0.14",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-konva": "^16.9.0-0",
