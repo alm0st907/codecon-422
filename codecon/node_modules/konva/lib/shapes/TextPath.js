@@ -267,7 +267,8 @@ var TextPath = (function (_super) {
         };
         var testChar = 'C';
         var glyphWidth = that._getTextSize(testChar).width + letterSpacing;
-        for (var k = 0; k < offset / glyphWidth; k++) {
+        var lettersInOffset = offset / glyphWidth - 1;
+        for (var k = 0; k < lettersInOffset; k++) {
             findSegmentToFitCharacter(testChar);
             if (p0 === undefined || p1 === undefined) {
                 break;
@@ -306,6 +307,14 @@ var TextPath = (function (_super) {
         }
     };
     TextPath.prototype.getSelfRect = function () {
+        if (!this.glyphInfo.length) {
+            return {
+                x: 0,
+                y: 0,
+                width: 0,
+                height: 0
+            };
+        }
         var points = [];
         this.glyphInfo.forEach(function (info) {
             points.push(info.p0.x);
@@ -313,10 +322,10 @@ var TextPath = (function (_super) {
             points.push(info.p1.x);
             points.push(info.p1.y);
         });
-        var minX = points[0];
-        var maxX = points[0];
-        var minY = points[0];
-        var maxY = points[0];
+        var minX = points[0] || 0;
+        var maxX = points[0] || 0;
+        var minY = points[1] || 0;
+        var maxY = points[1] || 0;
         var x, y;
         for (var i = 0; i < points.length / 2; i++) {
             x = points[i * 2];
