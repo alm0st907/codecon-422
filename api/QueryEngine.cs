@@ -15,9 +15,16 @@ namespace api
         DataTable UserTable;
         DataTable TaskTable;
 
+        //default the connection to our supplied string
+        //otherwise we use the given string in params
+        public QueryEngine(string connection =  @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True")
+        {
+            conString = connection;
+        }
+
         public int ConnectToServer()
         {
-            conString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True"; // This may need to be modified if running on non-windows OS
+            //conString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True"; // This may need to be modified if running on non-windows OS
 
             ProjectTable = new DataTable();
             UserTable = new DataTable();
