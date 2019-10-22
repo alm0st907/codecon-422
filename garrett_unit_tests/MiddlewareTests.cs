@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using api.Controllers;
 
 namespace Tests
 {
@@ -7,12 +8,50 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            ManageProjectController controllerUnderTest = new ManageProjectController();
         }
 
         [Test]
-        public void Test1()
+        public void testGetProject()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
+
+        [Test]
+        public void testGetUser()
+        {
+             
+        }
+
+        [Test]
+        public void testGetTask()
+        {
+             
+        }
+
+        [Test]
+        public void testGetAllTasks()
+        {
+             
+        }
+
+        [Test]
+        public void testCreateUser()
+        {
+             
+        }
+
+        [Test]
+        public void testCreateProject()
+        {
+             
+        }
+
+        [Test]
+        public void testCreateTask()
+        {
+             
+        }
+
     }
 }

@@ -1,0 +1,17 @@
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.dll
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\NUnit3.TestAdapter.pdb
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\nunit.engine.netstandard.dll
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\garrett_unit_tests.deps.json
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\garrett_unit_tests.runtimeconfig.json
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\garrett_unit_tests.runtimeconfig.dev.json
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\garrett_unit_tests.dll
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\garrett_unit_tests.pdb
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.csprojAssemblyReference.cache
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.csproj.CoreCompileInputs.cache
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.AssemblyInfoInputs.cache
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.AssemblyInfo.cs
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.dll
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.pdb
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\api.dll
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.2\api.pdb
+C:\Users\grrtt\dev\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.csproj.CopyComplete
