@@ -1,3 +1,0 @@
-C:\Users\JKrem\Documents\Git\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.csprojAssemblyReference.cache
-C:\Users\JKrem\Documents\Git\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.AssemblyInfoInputs.cache
-C:\Users\JKrem\Documents\Git\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.2\garrett_unit_tests.AssemblyInfo.cs
