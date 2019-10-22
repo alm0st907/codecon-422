@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using api;
 
 namespace Tests
 {

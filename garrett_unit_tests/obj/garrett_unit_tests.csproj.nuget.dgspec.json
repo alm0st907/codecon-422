@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\grrtt\\dev\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj": {}
+    "C:\\Users\\JKrem\\Documents\\Git\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\grrtt\\dev\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj": {
+    "C:\\Users\\JKrem\\Documents\\Git\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\grrtt\\dev\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj",
+        "projectUniqueName": "C:\\Users\\JKrem\\Documents\\Git\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj",
         "projectName": "garrett_unit_tests",
-        "projectPath": "C:\\Users\\grrtt\\dev\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj",
-        "packagesPath": "C:\\Users\\grrtt\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\grrtt\\dev\\codecon-422\\garrett_unit_tests\\obj\\",
+        "projectPath": "C:\\Users\\JKrem\\Documents\\Git\\codecon-422\\garrett_unit_tests\\garrett_unit_tests.csproj",
+        "packagesPath": "C:\\Users\\JKrem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JKrem\\Documents\\Git\\codecon-422\\garrett_unit_tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\grrtt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JKrem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,10 +58,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
