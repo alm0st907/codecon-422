@@ -5,16 +5,17 @@ namespace Tests
 {
     public class MiddlewareTests
     {
+        ManageProjectController ControllerUnderTest;
         [SetUp]
         public void Setup()
         {
-            ManageProjectController controllerUnderTest = new ManageProjectController();
+            ControllerUnderTest = new ManageProjectController();
         }
 
         [Test]
         public void testGetProject()
         {
-            Assert.Fail();
+            Assert.AreEqual(ControllerUnderTest.Index(), "oops! something went wrong!\n");
         }
 
         [Test]
