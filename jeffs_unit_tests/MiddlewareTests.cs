@@ -43,7 +43,6 @@ namespace Tests
         [Test]
         public void TestCreateProject()
         {
-
             Assert.Pass();
         }
 
