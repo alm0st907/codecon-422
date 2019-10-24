@@ -38,5 +38,19 @@ namespace Tests
             //to string is the settling point
             Assert.AreEqual(input.ToString(), output.ToString());
         }
+
+        //this test will add a task to the thing, must remove later
+        [Test]
+        public void AddTask()
+        {
+            Task testTask = new Task("Codecon", 1, "Garrett", "Test", "Test");
+            EngineUnderTest.AddTask(testTask);
+            Task returnTask = EngineUnderTest.GetTask("Test");
+
+            Assert.AreEqual(testTask.ToString(), returnTask.ToString());
+            //removing the task we just added, risky but works for now
+            EngineUnderTest.ExecuteSQLCommand("Delete from Task where taskName='Test'");
+            
+        }
     }
 }
