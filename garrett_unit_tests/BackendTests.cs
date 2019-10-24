@@ -52,5 +52,21 @@ namespace Tests
             EngineUnderTest.ExecuteSQLCommand("Delete from Task where taskName='Test'");
             
         }
+
+        [Test]
+        public void RemoveTask()
+        {
+            //ensure known db state before test
+            EngineUnderTest.ExecuteSQLCommand("Delete from Task where taskName='Test'");
+
+            //use sql to create task
+            EngineUnderTest.ExecuteSQLCommand("insert into task(projectName, escalationValue, assignee, taskName, description) values('Codecon', 5, 'Garrett', 'test', 'test')");
+
+            Assert.AreEqual(EngineUnderTest.RemoveTask("test"),0);
+            var test = EngineUnderTest.GetTask("test");
+
+            //assert that task is no longer present
+            Assert.IsNull(EngineUnderTest.GetTask("test"));
+        }
     }
 }
