@@ -34,6 +34,24 @@ namespace api
             }
         }
 
+        public int TestConnectToServer()
+        {
+            /// connects to the sql server and executes the sql script that builds a test database for testing purposes
+            /// calling this function in a test project will set the database context and allow for normal interaction with
+            /// the test database through standard QueryEngine function calls.
+
+            string sqlConnectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True";
+
+            string script = File.ReadAllText(@"codecon-422\codecon\data\Testdb_script.sql");
+
+            using (SqlConnection conn = new SqlConnection(sqlConnectionString))
+            {
+                Server server = new Server(new ServerConnection(conn));
+
+                server.ConnectionContext.ExecuteNonQuery(script);
+            }
+        }
+
         private void RetrieveTables()
         {
             using (SqlConnection serverConnection = new SqlConnection(conString))
