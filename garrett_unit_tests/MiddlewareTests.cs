@@ -38,41 +38,5 @@ namespace Tests
             Assert.AreEqual(testReturn["dueDate"].ToString(), expectedReturn["dueDate"].ToString());
         }
 
-        [Test]
-        public void testGetUser()
-        {
-             
-        }
-
-        [Test]
-        public void testGetTask()
-        {
-             
-        }
-
-        [Test]
-        public void testGetAllTasks()
-        {
-             
-        }
-
-        [Test]
-        public void testCreateUser()
-        {
-             
-        }
-
-        [Test]
-        public void testCreateProject()
-        {
-             
-        }
-
-        [Test]
-        public void testCreateTask()
-        {
-             
-        }
-
     }
 }
