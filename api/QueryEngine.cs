@@ -17,7 +17,7 @@ namespace api
 
         //default the connection to our supplied string
         //otherwise we use the given string in params
-        public QueryEngine(string connection =  @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True")
+        public QueryEngine(string connection = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True")
         {
             conString = connection;
         }
@@ -72,7 +72,7 @@ namespace api
             }
         }
 
-        private async void ExecuteSQLCommand(string query)    // executes an sql command asycronusly
+        public async void ExecuteSQLCommand(string query)    // executes an sql command asycronusly
         {
             using (SqlConnection serverConnection = new SqlConnection(conString))
             {
@@ -86,8 +86,8 @@ namespace api
                 }
             }
         }
-        
-        
+
+
         public User GetUser(string username, string password)
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
@@ -106,9 +106,9 @@ namespace api
                 }
 
                 fetchedUser.email = (from Row in UserTable.AsEnumerable()
-                                    where Row.Field<string>("username") == username
-                                    where Row.Field<string>("password") == password
-                                    select Row.Field<string>("email")).ToList().ElementAt(0);
+                                     where Row.Field<string>("username") == username
+                                     where Row.Field<string>("password") == password
+                                     select Row.Field<string>("email")).ToList().ElementAt(0);
 
                 fetchedUser.id = (from Row in UserTable.AsEnumerable()
                                   where Row.Field<string>("username") == username
@@ -124,20 +124,20 @@ namespace api
             }
             return fetchedUser;
         }
-        
-        
+
+
         public int AddUser(User newUser)
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
             try
             {
                 List<int> fetchedUserIDs = (from Column in UserTable.AsEnumerable()     // pulls existing IDs
-                                     select Column.Field<int>("id")).ToList();
+                                            select Column.Field<int>("id")).ToList();
 
                 newUser.id = fetchedUserIDs.Max() + 1;  // adds new ID
 
-                string query = "INSERT INTO [User] VALUES('" + newUser.username + "', '" 
-                    + newUser.email + "', '" 
+                string query = "INSERT INTO [User] VALUES('" + newUser.username + "', '"
+                    + newUser.email + "', '"
                     + newUser.passWord + "', "
                     + newUser.id + ");";
                 ExecuteSQLCommand(query);
@@ -148,7 +148,7 @@ namespace api
                 return -1;
             }
         }
-        
+
         public int RemoveUser(string username)
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
@@ -156,7 +156,7 @@ namespace api
             {
                 // check if the user is already gone
                 List<string> fetchedUsernames = (from Column in UserTable.AsEnumerable()     // pulls existing usernames
-                                            select Column.Field<string>("username")).ToList();
+                                                 select Column.Field<string>("username")).ToList();
 
                 if (fetchedUsernames.Contains(username))
                 {
@@ -175,7 +175,7 @@ namespace api
             }
         }
 
-        
+
         public Project GetProj(string projectName)
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
@@ -184,8 +184,8 @@ namespace api
             try
             {
                 var fetchedProjectRow = from Row in ProjectTable.AsEnumerable()
-                                     where Row.Field<string>("projectName") == projectName
-                                     select Row;
+                                        where Row.Field<string>("projectName") == projectName
+                                        select Row;
 
                 if (fetchedProjectRow.AsEnumerable().Count() == 0)      // project not found
                 {
@@ -197,8 +197,8 @@ namespace api
                                               select Row.Field<int>("defconScale")).ToList().ElementAt(0);
 
                 fetchedProject.dueDate = (from Row in ProjectTable.AsEnumerable()
-                                  where Row.Field<string>("projectName") == projectName
-                                  select Row.Field<DateTime>("dueDate")).ToList().ElementAt(0);
+                                          where Row.Field<string>("projectName") == projectName
+                                          select Row.Field<DateTime>("dueDate")).ToList().ElementAt(0);
 
                 fetchedProject.projectName = projectName;
             }
@@ -208,13 +208,13 @@ namespace api
             }
             return fetchedProject;
         }
-        
+
         public int AddProj(Project newProject)
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
             try
             {
-                string query = "INSERT INTO Project VALUES('" + newProject.projectName + "', " 
+                string query = "INSERT INTO Project VALUES('" + newProject.projectName + "', "
                     + newProject.defconScale + ", '"
                     + newProject.dueDate + "');";
                 ExecuteSQLCommand(query);
@@ -225,7 +225,7 @@ namespace api
                 return -1;
             }
         }
-            
+
         public int RemoveProj(string projectName)
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
@@ -252,7 +252,7 @@ namespace api
             }
         }
 
-        
+
         public int SetProjectDefconLevel(string projectName, int newLevel)      // sets the new level passed. The newLevel is NOT additive
         {
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
@@ -264,8 +264,8 @@ namespace api
 
                 if (fetchedProjNames.Contains(projectName))
                 {
-                    string query = "UPDATE Project SET defconScale = " + newLevel 
-                        + " WHERE projectName = '" 
+                    string query = "UPDATE Project SET defconScale = " + newLevel
+                        + " WHERE projectName = '"
                         + projectName + "';";
                     ExecuteSQLCommand(query);
                     return 0;
@@ -289,8 +289,8 @@ namespace api
             try
             {
                 var fetchedTaskRow = from Row in TaskTable.AsEnumerable()
-                                        where Row.Field<string>("taskName") == taskName
-                                        select Row;
+                                     where Row.Field<string>("taskName") == taskName
+                                     select Row;
 
                 if (fetchedTaskRow.AsEnumerable().Count() == 0)      // project not found
                 {
@@ -298,16 +298,16 @@ namespace api
                 }
 
                 fetchedTask.projectName = (from Row in TaskTable.AsEnumerable()
-                                              where Row.Field<string>("taskName") == taskName
-                                              select Row.Field<string>("projectName")).ToList().ElementAt(0);
+                                           where Row.Field<string>("taskName") == taskName
+                                           select Row.Field<string>("projectName")).ToList().ElementAt(0);
 
                 fetchedTask.escalationVal = (from Row in TaskTable.AsEnumerable()
-                                           where Row.Field<string>("taskName") == taskName
-                                           select Row.Field<int>("escalationValue")).ToList().ElementAt(0);
+                                             where Row.Field<string>("taskName") == taskName
+                                             select Row.Field<int>("escalationValue")).ToList().ElementAt(0);
 
                 fetchedTask.assignee = (from Row in TaskTable.AsEnumerable()
-                                           where Row.Field<string>("taskName") == taskName
-                                           select Row.Field<string>("assignee")).ToList().ElementAt(0);
+                                        where Row.Field<string>("taskName") == taskName
+                                        select Row.Field<string>("assignee")).ToList().ElementAt(0);
 
                 fetchedTask.description = (from Row in TaskTable.AsEnumerable()
                                            where Row.Field<string>("taskName") == taskName
@@ -327,10 +327,10 @@ namespace api
             RetrieveTables();       // get a fresh copy of the database tables before every query to prevent errors
             try
             {
-                string query = "INSERT INTO Task VALUES('" + newTask.projectName + "', '" 
-                    + newTask.escalationVal + "', '" 
-                    + newTask.assignee + "', '" 
-                    + newTask.taskName + "', '" 
+                string query = "INSERT INTO Task VALUES('" + newTask.projectName + "', '"
+                    + newTask.escalationVal + "', '"
+                    + newTask.assignee + "', '"
+                    + newTask.taskName + "', '"
                     + newTask.description + "');";
                 ExecuteSQLCommand(query);
                 return 0;
@@ -374,8 +374,8 @@ namespace api
             {
                 List<Task> returnList = new List<Task>();
                 var fetchedTasks = from Row in TaskTable.AsEnumerable()
-                                           where Row.Field<string>("projectName") == projectName
-                                            select Row;
+                                   where Row.Field<string>("projectName") == projectName
+                                   select Row;
 
                 foreach (DataRow r in fetchedTasks)
                 {
