@@ -39,5 +39,17 @@ namespace Tests
 
             Assert.AreEqual(testReturn["description"], expectedReturn["description"]);
         }
+
+        [Test]
+        public void TestCreateProject()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void TestCreateTask()
+        {
+            Assert.Pass();
+        }
     }
 }

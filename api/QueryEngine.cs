@@ -72,7 +72,7 @@ namespace api
             }
         }
 
-        public async void ExecuteSQLCommand(string query)    // executes an sql command asycronusly
+        private async void ExecuteSQLCommand(string query)    // executes an sql command asycronusly
         {
             using (SqlConnection serverConnection = new SqlConnection(conString))
             {
