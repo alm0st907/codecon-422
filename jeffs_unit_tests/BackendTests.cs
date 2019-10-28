@@ -48,11 +48,8 @@ namespace Tests
             Assert.IsNotNull(testReturn);
 
             Assert.AreEqual(testReturn.projectName, expectedReturn.projectName);
-
             Assert.AreEqual(testReturn.escalationVal, expectedReturn.escalationVal);
-
             Assert.AreEqual(testReturn.assignee, expectedReturn.assignee);
-
             Assert.AreEqual(testReturn.description, expectedReturn.description);
         }
 
@@ -75,6 +72,8 @@ namespace Tests
         {
             User testUser = new User("tesitus", "Test@Test.Test", "test", 0);
             QueryEngineUnderTest.AddUser(testUser);
+           
+
 
             var testReturn = QueryEngineUnderTest.GetUser("tesitus", "test");
 
@@ -83,23 +82,23 @@ namespace Tests
             Assert.AreEqual(testReturn.username, testUser.username);
             Assert.AreEqual(testReturn.email, testUser.email);
             Assert.AreEqual(testReturn.passWord, testUser.passWord);
-            
+
             //remove dummy user
-            QueryEngineUnderTest.RemoveUser("tesitus");
+            QueryEngineUnderTest.ExecuteSQLCommand("Delete from [User] where username='tesitus'");
 
         }
 
         [Test]
         public void TestRemoveUser()
         {
-            User testUser = new User("tesitus2", "Test2@Test.Test", "test", 0); //Create the test user
+            //User testUser = new User("tesitus2", "Test2@Test.Test", "test", 0); //Create the test user
             //add the test user, then attempt to remove the user
-            QueryEngineUnderTest.AddUser(testUser);
+            //QueryEngineUnderTest.AddUser(testUser);
+            QueryEngineUnderTest.ExecuteSQLCommand("insert into user(username, email, password, id) values('tesitus2','Test2@Test.Test', 'test', 7)");
             QueryEngineUnderTest.RemoveUser("tesitus2");
             
             //confirm the test user was removed, by checking if GetUser returns null
-            var testReturn = QueryEngineUnderTest.GetUser("tesitus2", "test");
-            Assert.IsNull(testReturn);
+            Assert.IsNull(QueryEngineUnderTest.GetUser("tesitus2", "test"));
         }
     }
 }
