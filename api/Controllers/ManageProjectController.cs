@@ -89,14 +89,16 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JArray GetAllTasks(string projectName)
+        public JObject GetAllTasks(string projectName)
         {
             List<Task> retTaskList = new List<Task>();
             JArray retJList = new JArray();
             retTaskList = engine.GetTasks(projectName);
 
             retJList = JArray.FromObject(retTaskList);
-            return retJList;
+            JObject finalRet = new JObject();
+            finalRet.Add("items", retJList);
+            return finalRet;
         }
 
         [HttpGet]
