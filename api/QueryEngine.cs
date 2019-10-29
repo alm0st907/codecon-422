@@ -5,15 +5,17 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
 using System.IO;
+//Microsoft.SqlServer.ConnectionInfo.dll
+using Microsoft.SqlServer.Management.Common;
 
 namespace api
 {
     public class QueryEngine
     {
-        string conString;
-        DataTable ProjectTable;
-        DataTable UserTable;
-        DataTable TaskTable;
+        public string conString { get; private set; }
+        public DataTable ProjectTable { get; private set; }
+        public DataTable UserTable { get; private set; }
+        public DataTable TaskTable { get; private set; }
 
         public int ConnectToServer()
         {
@@ -36,20 +38,34 @@ namespace api
 
         public int TestConnectToServer()
         {
+            // TODO: Fix this function to support creation of test database
+
             /// connects to the sql server and executes the sql script that builds a test database for testing purposes
             /// calling this function in a test project will set the database context and allow for normal interaction with
             /// the test database through standard QueryEngine function calls.
 
+            ProjectTable = new DataTable();
+            UserTable = new DataTable();
+            TaskTable = new DataTable();
+
             conString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True";
 
-            string script = File.ReadAllText(@"codecon-422\codecon\data\Testdb_script.sql");
+            string dropAndCreateDB = "DROP DATABASE IF EXISTS TestCodeconDB; CREATE DATABASE TestCodeconDB;";
+            string createProjTable = File.ReadAllText(@"Testdb_createProj_script.sql");
+            string createUserTable = File.ReadAllText(@"Testdb_createUser_script.sql");
+            string createTaskTable = File.ReadAllText(@"Testdb_createTask_script.sql");
+            string inserts = File.ReadAllText(@"Testdb_Insert_script.sql");
 
-            ExecuteSQLCommand(script);
+            ExecuteSQLCommand(dropAndCreateDB);
+            ExecuteSQLCommand(createProjTable);
+            ExecuteSQLCommand(createUserTable);
+            ExecuteSQLCommand(createTaskTable);
+            ExecuteSQLCommand(inserts);
 
             return 0;
         }
 
-        private void RetrieveTables()
+        public void RetrieveTables()    // public for testing
         {
             using (SqlConnection serverConnection = new SqlConnection(conString))
             {

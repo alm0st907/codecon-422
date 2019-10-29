@@ -6,9 +6,9 @@ C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tes
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.1\garrett_unit_tests.runtimeconfig.dev.json
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.1\garrett_unit_tests.dll
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.1\garrett_unit_tests.pdb
-C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.csprojAssemblyReference.cache
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.csproj.CoreCompileInputs.cache
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.AssemblyInfoInputs.cache
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.AssemblyInfo.cs
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.dll
 C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.pdb
+C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.csprojAssemblyReference.cache
