@@ -10,7 +10,7 @@ namespace Tests
         public void Setup()
         {
             EngineUnderTest = new QueryEngine();
-            EngineUnderTest.ConnectToServer();
+            EngineUnderTest.TestConnectToServer();
         }
 
         [Test]

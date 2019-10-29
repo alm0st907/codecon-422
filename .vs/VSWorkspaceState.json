@@ -3,9 +3,8 @@
     "",
     "\\api",
     "\\codecon",
-    "\\codecon\\data",
-    "\\mike_unit_tests"
+    "\\codecon\\data"
   ],
-  "SelectedNode": "\\api\\Program.cs",
+  "SelectedNode": "\\mike_unit_tests",
   "PreviewInSolutionExplorer": false
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
-
+using System.IO;
 
 namespace api
 {
@@ -40,16 +40,13 @@ namespace api
             /// calling this function in a test project will set the database context and allow for normal interaction with
             /// the test database through standard QueryEngine function calls.
 
-            string sqlConnectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True";
+            conString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=CodeconDB;Integrated Security=True";
 
             string script = File.ReadAllText(@"codecon-422\codecon\data\Testdb_script.sql");
 
-            using (SqlConnection conn = new SqlConnection(sqlConnectionString))
-            {
-                Server server = new Server(new ServerConnection(conn));
+            ExecuteSQLCommand(script);
 
-                server.ConnectionContext.ExecuteNonQuery(script);
-            }
+            return 0;
         }
 
         private void RetrieveTables()
