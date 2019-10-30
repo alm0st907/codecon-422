@@ -20,7 +20,7 @@ namespace Tests
             JObject expectedReturn = new JObject
             {
                 {"projectName","Codecon" },
-                {"defconScale",5 },
+                {"defconScale", 4 },
              {"dueDate", "9/19/2019 12:00:00 AM" }
             };
 
