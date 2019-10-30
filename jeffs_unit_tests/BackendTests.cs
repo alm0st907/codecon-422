@@ -20,7 +20,7 @@ namespace Tests
         {
             var testReturn = QueryEngineUnderTest.GetProj("Codecon");
             DateTime expectedDate = DateTime.Parse("9/19/2019 12:00:00 AM");
-            Project expectedReturn = new Project("Codecon", 5, expectedDate);
+            Project expectedReturn = new Project("Codecon", 4, expectedDate);
 
 
             Assert.IsNotNull(testReturn);
@@ -95,7 +95,7 @@ namespace Tests
             QueryEngineUnderTest.ExecuteSQLCommand("Delete from [User] where username='tesitus2'");
             //User testUser = new User("tesitus2", "Test2@Test.Test", "test", 0); //Create the test user
             //add the test user, then attempt to remove the user
-            QueryEngineUnderTest.ExecuteSQLCommand("insert into user(username, email, password, id) values('tesitus2', 'Test2@Test.Test', 'test', 7)");
+            QueryEngineUnderTest.ExecuteSQLCommand("insert into [user](username, email, password, id) values('tesitus2', 'Test2@Test.Test', 'test', 7)");
             QueryEngineUnderTest.RemoveUser("tesitus2");
             
             //confirm the test user was removed, by checking if GetUser returns null
