@@ -29,3 +29,6 @@ C:\Users\grudisill\Documents\GitHub\codecon-422\garrett_unit_tests\obj\Debug\net
 C:\Users\grudisill\Documents\GitHub\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.csproj.CopyComplete
 C:\Users\grudisill\Documents\GitHub\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.dll
 C:\Users\grudisill\Documents\GitHub\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.pdb
+C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.1\api.dll
+C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\bin\Debug\netcoreapp2.1\api.pdb
+C:\Users\Mike Berger\Documents\WSU\FallSemester2019\codecon-422\garrett_unit_tests\obj\Debug\netcoreapp2.1\garrett_unit_tests.csproj.CopyComplete
