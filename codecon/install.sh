@@ -13,5 +13,13 @@ echo "checking for missing packages:"
 [ $(node -p "require('react-scripts/package.json').version") != "3.1.2" ] && npm install react-scripts
 [ $(node -p "require('reactstrap/package.json').version") != "8.0.1" ] && npm install reactstrap
 [ $(node -p "require('styled-components/package.json').version") != "4.3.2" ] && npm install styled-components
+[ $(node -p "require('enzyme/package.json').version") != "3.10.0" ] && npm install enzyme
+[ $(node -p "require('fetch-mock/package.json').version") != "8.0.0" ] && npm install fetch-mock
+[ $(node -p "require('jest/package.json').version") != "24.9.0" ] && npm install jest
+[ $(node -p "require('@testing-library/react/package.json').version") != "9.3.2" ] && npm install @testing-library/react
+[ $(node -p "require('@testing-library/user-event/package.json').version") != "7.1.2" ] && npm install @testing-library/user-event
+[ $(node -p "require('jest-dom/package.json').version") != "4.0.0" ] && npm install jest-dom
+[ $(node -p "require('nock/package.json').version") != "11.7.0" ] && npm install nock
+
 
 echo "done"

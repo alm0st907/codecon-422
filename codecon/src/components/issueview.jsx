@@ -74,3 +74,4 @@ export default class IssueView extends Component {
     );
   }
 }
+
