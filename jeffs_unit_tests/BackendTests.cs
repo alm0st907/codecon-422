@@ -73,26 +73,75 @@ namespace Tests
         [Test]
         public void TestAddUser()
         {
-            User testUser = new User("tesitus", "Test@Test.Test", "test", 0);
-            QueryEngineUnderTest.AddUser(testUser);
+            //ensure clean database
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username='tesitus1'");
 
-            var testReturn = QueryEngineUnderTest.GetUser("tesitus", "test");
+            User testUser = new User("tesitus1", "Test@Test.Test", "test", 0);
+            QueryEngineUnderTest.ExecuteSQLCommand("INSERT INTO [User] VALUES('" + testUser.username + "', '"
+                    + testUser.email + "', '"
+                    + testUser.passWord + "', "
+                    + testUser.id + ");");
+
+            var testReturn = QueryEngineUnderTest.GetUser("tesitus1", "test");
+
+            //remove test user 
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username = 'tesitus1';");
 
             //Ensure All values are the same as testUser
             Assert.IsNotNull(testReturn);
             Assert.AreEqual(testReturn.username, testUser.username);
             Assert.AreEqual(testReturn.email, testUser.email);
             Assert.AreEqual(testReturn.passWord, testUser.passWord);
+        }
 
-            //remove dummy user
-            //QueryEngineUnderTest.RemoveUser("tesitus");
-            QueryEngineUnderTest.ExecuteSQLCommand("Delete from [User] where username='tesitus'");
+        [Test]
+        public void TestAddUser_duplicateID()
+        {
+            //ensure clean database
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username='tesitus3'");
+
+            User testUser = new User("tesitus3", "Test@Test.Test", "test", 1);
+            QueryEngineUnderTest.ExecuteSQLCommand("INSERT INTO [User] VALUES('" + testUser.username + "', '"
+                    + testUser.email + "', '"
+                    + testUser.passWord + "', "
+                    + testUser.id + ");");
+
+            var testReturn = QueryEngineUnderTest.GetUser("tesitus3", "test");
+            
+            //remove test user 
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username = 'tesitus3';");
+            
+            //User with duplicate ID should have ID fixed
+            Assert.IsNotNull(testReturn);
+            Assert.AreNotEqual(1, testReturn.id);
+        }
+
+        [Test]
+        public void TestAddUser_negativeID()
+        {
+            //ensure clean database
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username='tesitus4''");
+
+            User testUser = new User("tesitus4", "Test@Test.Test", "test", -1);
+            QueryEngineUnderTest.ExecuteSQLCommand("INSERT INTO [User] VALUES('" + testUser.username + "', '"
+                    + testUser.email + "', '"
+                    + testUser.passWord + "', "
+                    + testUser.id + ");");
+
+            var testReturn = QueryEngineUnderTest.GetUser("tesitus4", "test");
+
+            //remove test user 
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username = 'tesitus4';");
+            
+            //User with negative ID should have ID fixed to use proper ID
+            Assert.IsNotNull(testReturn);
+            Assert.AreNotEqual(-1, testReturn.id);
         }
 
         [Test]
         public void TestRemoveUser()
         {
-            QueryEngineUnderTest.ExecuteSQLCommand("Delete from [User] where username='tesitus2'");
+            QueryEngineUnderTest.ExecuteSQLCommand("DELETE FROM [User] WHERE username='tesitus2'");
             //User testUser = new User("tesitus2", "Test2@Test.Test", "test", 0); //Create the test user
             //add the test user, then attempt to remove the user
             QueryEngineUnderTest.ExecuteSQLCommand("insert into [user](username, email, password, id) values('tesitus2', 'Test2@Test.Test', 'test', 7)");
