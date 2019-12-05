@@ -53,7 +53,7 @@ export default class IssueInfo extends Component {
     //need to fill out the data, populate the url with proper url for the action
     var data = {
       //username: "testname",
-      projectName: "Placeholder",
+      projectName: "Codecon",
       escalationValue: this.state.issueDefconLevel,
       assignedWorker: this.state.issueAssignee,
       taskName: this.state.issueName,
