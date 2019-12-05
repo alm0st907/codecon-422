@@ -60,8 +60,15 @@ namespace api.Controllers
             Project retProj = new Project();
             JObject retJProj = new JObject();
             retProj = engine.GetProj(projectName);
-
-            retJProj = JObject.FromObject(retProj);
+            try
+            {
+                retJProj = JObject.FromObject(retProj);
+          
+            }
+            catch
+            {
+                return null;
+            }
             return retJProj;
         }
 
@@ -83,8 +90,14 @@ namespace api.Controllers
             Task retTask = new Task();
             JObject retJTask = new JObject();
             retTask = engine.GetTask(TaskName);
-
-            retJTask = JObject.FromObject(retTask);
+            try
+            {
+                retJTask = JObject.FromObject(retTask);
+            }
+            catch
+            {
+                return null;
+            }
             return retJTask;
         }
 

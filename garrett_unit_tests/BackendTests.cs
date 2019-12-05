@@ -39,6 +39,14 @@ namespace Tests
             Assert.AreEqual(input.ToString(), output.ToString());
         }
 
+        [Test]
+        public void GetTasksProjectDoesNotExist()
+        {
+            List<Task> testReturn = EngineUnderTest.GetTasks("fakeProjectistan");
+
+            Assert.IsEmpty(testReturn);
+        }
+
         //this test will add a task to the thing, must remove later
         [Test]
         public void AddTask()
