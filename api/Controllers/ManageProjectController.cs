@@ -54,6 +54,7 @@ namespace api.Controllers
             }
         }
 
+        //fixed the null ret here
         [HttpGet]
         public JObject GetProject(string projectName)
         {
@@ -71,6 +72,7 @@ namespace api.Controllers
             }
             return retJProj;
         }
+        //see now theres a null ret
 
         [HttpGet]
         public JObject DummyGetProject()
@@ -84,6 +86,7 @@ namespace api.Controllers
             return retJProj;
         }
 
+        //fixed this
         [HttpGet]
         public JObject GetTask(string TaskName)
         {
@@ -100,6 +103,7 @@ namespace api.Controllers
             }
             return retJTask;
         }
+        //now a null ret
 
         [HttpGet]
         public JObject GetAllTasks(string projectName)
