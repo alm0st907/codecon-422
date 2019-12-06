@@ -112,7 +112,14 @@ namespace api
                     await System.Threading.Tasks.Task.Run(() =>
                     {
                         serverConnection.Open();
-                        cmd.ExecuteNonQuery();
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (SqlException e)
+                        {
+                            return;
+                        }
                     });
                 }
             }
