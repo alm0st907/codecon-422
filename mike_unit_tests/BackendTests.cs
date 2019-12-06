@@ -149,7 +149,7 @@ namespace Tests
             string query = "DELETE FROM Project WHERE projectName = 'TEST';";
             EngineUnderTest.ExecuteSQLCommand(query);
         }
-        
+
         [Test]
         public void TestRemoveProj()
         {
@@ -171,6 +171,48 @@ namespace Tests
 
             // Check if the project was removed by calling GetProj
             Assert.AreEqual(0, EngineUnderTest.RemoveProj("TEST"));
+        }
+
+        [Test]
+        public void TestGetInvalidProj()
+        {
+            // create a fake name string for a non-existant project
+            string fakeProj = "NOTAPROJ";
+
+            // try to get the fake project
+            Assert.AreEqual(null, EngineUnderTest.GetProj(fakeProj));
+        }
+
+        [Test]
+        public void TestAddDuplicateProj()
+        {
+            // Create a test object
+            Project newProj = new Project
+            {
+                projectName = "TEST",
+                defconScale = 1,
+                dueDate = Convert.ToDateTime("1-1-1999")
+            };
+
+            // add the new project twice
+            EngineUnderTest.AddProj(newProj);
+            Assert.AreEqual(0, EngineUnderTest.AddProj(newProj));
+
+            // clean up the db
+            string query = "DELETE FROM Project WHERE projectName = 'TEST';";
+            EngineUnderTest.ExecuteSQLCommand(query);
+        }
+
+        [Test]
+        public void TestGetInvalidUser()
+        {
+            string fakeUser = "Chalie Sheen";
+            string fakePW = "tiger blood";
+
+            // try to retrieve a non-existant user
+            User fakeReturn = EngineUnderTest.GetUser(fakeUser, fakePW);
+
+            Assert.AreEqual(fakeReturn, null);
         }
     }
 };

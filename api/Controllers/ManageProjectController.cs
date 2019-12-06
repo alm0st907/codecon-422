@@ -54,16 +54,25 @@ namespace api.Controllers
             }
         }
 
+        //fixed the null ret here
         [HttpGet]
         public JObject GetProject(string projectName)
         {
             Project retProj = new Project();
             JObject retJProj = new JObject();
             retProj = engine.GetProj(projectName);
-
-            retJProj = JObject.FromObject(retProj);
+            try
+            {
+                retJProj = JObject.FromObject(retProj);
+          
+            }
+            catch
+            {
+                return null;
+            }
             return retJProj;
         }
+        //see now theres a null ret
 
         [HttpGet]
         public JObject DummyGetProject()
@@ -77,16 +86,24 @@ namespace api.Controllers
             return retJProj;
         }
 
+        //fixed this
         [HttpGet]
         public JObject GetTask(string TaskName)
         {
             Task retTask = new Task();
             JObject retJTask = new JObject();
             retTask = engine.GetTask(TaskName);
-
-            retJTask = JObject.FromObject(retTask);
+            try
+            {
+                retJTask = JObject.FromObject(retTask);
+            }
+            catch
+            {
+                return null;
+            }
             return retJTask;
         }
+        //now a null ret
 
         [HttpGet]
         public JObject GetAllTasks(string projectName)

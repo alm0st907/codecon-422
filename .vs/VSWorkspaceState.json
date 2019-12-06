@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\api",
-    "\\codecon",
-    "\\codecon\\data"
+    "\\codecon\\data",
+    "\\garrett_unit_tests",
+    "\\jeffs_unit_tests",
+    "\\mike_unit_tests"
   ],
   "SelectedNode": "\\mike_unit_tests",
   "PreviewInSolutionExplorer": false
